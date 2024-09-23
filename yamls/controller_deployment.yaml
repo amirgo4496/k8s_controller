@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-script-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-script-controller
+  template:
+    metadata:
+      labels:
+        app: python-script-controller
+    spec:
+      serviceAccountName: python-script-controller-sa
+      containers:
+      - name: python-script-controller
+        image: amirgo44/my-controller:v1.0
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"

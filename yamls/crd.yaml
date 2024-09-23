@@ -1,0 +1,29 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: python-script-containers.learn-k8s.com
+spec:
+  group: learn-k8s.com
+  names:
+    kind: PythonScriptContainer
+    listKind: PythonScriptContainerList
+    plural: python-script-containers
+    singular: python-script-container
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                script:
+                  type: string
+                  description: "The Python script to run."
+                image:
+                  type: string
+                  description: "The Docker image to use for running the script."

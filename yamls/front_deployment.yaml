@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: controller-flask-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: controller-flask-app
+  template:
+    metadata:
+      labels:
+        app: controller-flask-app
+    spec:
+      serviceAccountName: python-script-controller-sa
+      containers:
+      - name: controller-flask-app
+        image: amirgo44/controller-flask-app:latest
+        imagePullPolicy: Always  # Revert this line
+        ports:
+        - containerPort: 8000
+        env:
+        - name: FLASK_ENV
+          value: "production"
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
