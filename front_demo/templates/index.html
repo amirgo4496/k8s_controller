@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Dashboard</title>
+</head>
+<body>
+    <h1>Flask Dashboard</h1>
+    <h2>Upload Python Script</h2>
+    <form action="/upload" method="post">
+        <label for="script">Script:</label><br>
+        <textarea id="script" name="script" rows="4" cols="50"></textarea><br>
+        <label for="image">Docker Image:</label><br>
+        <input type="text" id="image" name="image"><br><br>
+        <input type="submit" value="Upload">
+    </form>
+
+    <h2>Get Pod Logs</h2>
+    <form action="/logs" method="get">
+        <label for="pod_name">Pod Name:</label><br>
+        <input type="text" id="pod_name" name="pod_name"><br><br>
+        <input type="submit" value="Get Logs">
+    </form>
+</body>
+</html>
